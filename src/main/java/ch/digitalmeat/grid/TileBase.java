@@ -9,7 +9,7 @@ public class TileBase<T extends TileBase<T>> {
 		if (chunk == null || chunk.grid == null) {
 			return null;
 		}
-		Grid<T> grid = chunk.grid;
+		TileGrid<T> grid = chunk.grid;
 		ChunkCoordinates coordinates = chunk.coordinates;
 		int worldX = grid.getGlobalX(coordinates.x, localX) + direction.stepX();
 		int worldY = grid.getGlobalY(coordinates.y, localY) + direction.stepY();

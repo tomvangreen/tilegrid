@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class ChunkManager<T extends TileBase<T>> {
 	public final Map<ChunkCoordinates, Chunk<T>> chunks = new HashMap<ChunkCoordinates, Chunk<T>>();
-	public final GridFactory<T> factory;
+	public final TileGridFactory<T> factory;
 
-	private final Grid<T> grid;
+	private final TileGrid<T> grid;
 	private final ChunkCoordinates finderCoordinates = new ChunkCoordinates();
 
-	public ChunkManager(GridFactory<T> factory, Grid<T> grid) {
+	public ChunkManager(TileGridFactory<T> factory, TileGrid<T> grid) {
 		this.factory = factory;
 		this.grid = grid;
 	}

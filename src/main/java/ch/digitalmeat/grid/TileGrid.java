@@ -1,12 +1,12 @@
 package ch.digitalmeat.grid;
 
-public class Grid<T extends TileBase<T>> {
-	public final GridFactory<T> factory;
+public class TileGrid<T extends TileBase<T>> {
+	public final TileGridFactory<T> factory;
 	public final ChunkManager<T> chunks;
 	public final int chunkWidth;
 	public final int chunkHeight;
 
-	public Grid(GridFactory<T> factory, int chunkWidth, int chunkHeight) {
+	public TileGrid(TileGridFactory<T> factory, int chunkWidth, int chunkHeight) {
 		this.factory = factory;
 		this.chunkWidth = chunkWidth;
 		this.chunkHeight = chunkHeight;

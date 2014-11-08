@@ -3,10 +3,10 @@ package ch.digitalmeat.grid;
 public class Chunk<T extends TileBase<T>> {
 	public final ChunkCoordinates coordinates;
 	public final Table<T> tiles;
-	public Grid<T> grid;
-	private final GridFactory<T> factory;
+	public TileGrid<T> grid;
+	private final TileGridFactory<T> factory;
 
-	public Chunk(GridFactory<T> factory, int chunkX, int chunkY, int width, int height) {
+	public Chunk(TileGridFactory<T> factory, int chunkX, int chunkY, int width, int height) {
 		this.factory = factory;
 		coordinates = new ChunkCoordinates(chunkX, chunkY);
 		tiles = new Table<T>(width, height);
