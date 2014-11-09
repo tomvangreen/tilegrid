@@ -1,6 +1,5 @@
 package ch.digitalmeat.grid;
 
-
 public class ChunkCoordinates {
 	public int x;
 	public int y;
@@ -30,5 +29,10 @@ public class ChunkCoordinates {
 			return x == other.x && y == other.y;
 		}
 		return false;
+	}
+
+	public void set(ChunkCoordinates coordinates) {
+		this.x = coordinates.x;
+		this.y = coordinates.y;
 	}
 }

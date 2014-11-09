@@ -6,7 +6,7 @@ gradle.properties
 .settings/
 bin/
 build/
-
+testdata/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

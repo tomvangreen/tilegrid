@@ -1,7 +1,7 @@
 package ch.digitalmeat.grid;
 
 public class TileCoordinates {
-	public ChunkCoordinates chunkCoordinates;
+	public final ChunkCoordinates chunkCoordinates = new ChunkCoordinates();
 	public int localX;
 	public int localY;
 

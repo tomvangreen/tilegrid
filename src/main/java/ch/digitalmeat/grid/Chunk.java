@@ -2,13 +2,16 @@ package ch.digitalmeat.grid;
 
 public class Chunk<T extends TileBase<T>> {
 	public final ChunkCoordinates coordinates;
-	public final Table<T> tiles;
+	private Table<T> tiles;
 	public TileGrid<T> grid;
 	private final TileGridFactory<T> factory;
 
-	public Chunk(TileGridFactory<T> factory, int chunkX, int chunkY, int width, int height) {
+	public Chunk(TileGridFactory<T> factory) {
 		this.factory = factory;
-		coordinates = new ChunkCoordinates(chunkX, chunkY);
+		coordinates = new ChunkCoordinates();
+	}
+
+	public void init(int width, int height) {
 		tiles = new Table<T>(width, height);
 	}
 
