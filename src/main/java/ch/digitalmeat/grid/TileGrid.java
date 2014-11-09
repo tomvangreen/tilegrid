@@ -8,35 +8,35 @@ import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.tile.TileCoordinates;
 
-public class TileGrid<T extends TileBase<T>> {
-	public final TileGridFactory<T> factory;
+public class TileGrid<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+	public final TileGridFactory<T, C> factory;
 	public final int chunkWidth;
 	public final int chunkHeight;
 	private final ChunkCoordinates finderCoordinates = new ChunkCoordinates();
-	public final Map<ChunkCoordinates, Chunk<T>> chunks = new HashMap<ChunkCoordinates, Chunk<T>>();
+	public final Map<ChunkCoordinates, C> chunks = new HashMap<ChunkCoordinates, C>();
 
-	public TileGrid(TileGridFactory<T> factory, int chunkWidth, int chunkHeight) {
+	public TileGrid(TileGridFactory<T, C> factory, int chunkWidth, int chunkHeight) {
 		this.factory = factory;
 		this.chunkWidth = chunkWidth;
 		this.chunkHeight = chunkHeight;
 	}
 
-	public Chunk<T> getChunk(int chunkX, int chunkY) {
+	public C getChunk(int chunkX, int chunkY) {
 		finderCoordinates.set(chunkX, chunkY);
 		return getChunk(finderCoordinates);
 	}
 
-	public Chunk<T> getChunk(ChunkCoordinates coordinates) {
+	public C getChunk(ChunkCoordinates coordinates) {
 		return chunks.get(coordinates);
 	}
 
-	public Chunk<T> ensureChunk(int chunkX, int chunkY) {
+	public C ensureChunk(int chunkX, int chunkY) {
 		finderCoordinates.set(chunkX, chunkY);
 		return ensureChunk(finderCoordinates);
 	}
 
-	public Chunk<T> ensureChunk(ChunkCoordinates coordinates) {
-		Chunk<T> chunk = chunks.get(coordinates);
+	public C ensureChunk(ChunkCoordinates coordinates) {
+		C chunk = chunks.get(coordinates);
 		if (chunk == null) {
 			chunk = factory.createChunk();
 			chunk.coordinates.set(coordinates.x, coordinates.y);
@@ -85,7 +85,7 @@ public class TileGrid<T extends TileBase<T>> {
 	}
 
 	public T getTile(int chunkX, int chunkY, int localX, int localY) {
-		Chunk<T> chunk = getChunk(chunkX, chunkY);
+		C chunk = getChunk(chunkX, chunkY);
 		if (chunk == null) {
 			return null;
 		}
@@ -93,7 +93,7 @@ public class TileGrid<T extends TileBase<T>> {
 	}
 
 	public T ensureTile(int globalX, int globalY) {
-		Chunk<T> chunk = ensureChunk(getChunkX(globalX), getChunkY(globalY));
+		C chunk = ensureChunk(getChunkX(globalX), getChunkY(globalY));
 		return chunk.ensure(getLocalX(globalX), getLocalY(globalY));
 	}
 }

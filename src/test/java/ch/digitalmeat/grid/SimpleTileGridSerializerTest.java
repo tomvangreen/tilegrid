@@ -14,8 +14,8 @@ public class SimpleTileGridSerializerTest {
 
 	@Test
 	public void testOutput() {
-		SimpleTileGridSerializer<TestTile> serializer = new SimpleTileGridSerializer<>();
-		TileGrid<TestTile> grid = new TileGrid<TestTile>(new TestFactory(), 16, 16);
+		SimpleTileGridSerializer<TestTile, TestChunk> serializer = new SimpleTileGridSerializer<>();
+		TileGrid<TestTile, TestChunk> grid = new TileGrid<TestTile, TestChunk>(new TestFactory(), 32, 32);
 		grid.ensureTile(1, 1);
 		serializer.writeGrid(TESTFOLDER + "testOutput", grid);
 	}

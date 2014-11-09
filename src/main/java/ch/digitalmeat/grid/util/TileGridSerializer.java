@@ -4,12 +4,12 @@ import ch.digitalmeat.grid.TileGrid;
 import ch.digitalmeat.grid.chunk.Chunk;
 import ch.digitalmeat.grid.tile.TileBase;
 
-public interface TileGridSerializer<T extends TileBase<T>> {
-	public TileGrid<T> readGrid(String gridFile);
+public interface TileGridSerializer<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+	public TileGrid<T, C> readGrid(String gridFile);
 
-	public void writeGrid(String gridFile, TileGrid<T> grid);
+	public void writeGrid(String gridFile, TileGrid<T, C> grid);
 
-	public Chunk<T> readChunk(String chunkFile);
+	public C readChunk(String chunkFile);
 
-	public void writeChunk(String gridFile, Chunk<T> grid);
+	public void writeChunk(String gridFile, C grid);
 }

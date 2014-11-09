@@ -5,11 +5,11 @@ import ch.digitalmeat.grid.chunk.Chunk;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.tile.TileCoordinates;
 
-public class TileGridNavigator<T extends TileBase<T>> {
-	public final TileGrid<T> grid;
+public class TileGridNavigator<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+	public final TileGrid<T, C> grid;
 	public final TileCoordinates coordinates = new TileCoordinates();
 
-	public TileGridNavigator(TileGrid<T> grid) {
+	public TileGridNavigator(TileGrid<T, C> grid) {
 		this.grid = grid;
 	}
 
@@ -17,7 +17,7 @@ public class TileGridNavigator<T extends TileBase<T>> {
 		return grid.getChunk(0, 0) != null;
 	}
 
-	public Chunk<T> chunk() {
+	public C chunk() {
 		return grid.getChunk(0, 0);
 	}
 

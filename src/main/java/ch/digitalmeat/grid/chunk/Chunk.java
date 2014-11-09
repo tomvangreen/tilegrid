@@ -5,13 +5,13 @@ import ch.digitalmeat.grid.TileGridFactory;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.util.Table;
 
-public class Chunk<T extends TileBase<T>> {
+public class Chunk<T extends TileBase<T, C>, C extends Chunk<T, C>> {
 	public final ChunkCoordinates coordinates;
 	private Table<T> tiles;
-	public TileGrid<T> grid;
-	private final TileGridFactory<T> factory;
+	public TileGrid<T, C> grid;
+	private final TileGridFactory<T, C> factory;
 
-	public Chunk(TileGridFactory<T> factory) {
+	public Chunk(TileGridFactory<T, C> factory) {
 		this.factory = factory;
 		coordinates = new ChunkCoordinates();
 	}
@@ -30,8 +30,8 @@ public class Chunk<T extends TileBase<T>> {
 			tile = factory.createTile();
 			tile.localX = localX;
 			tile.localY = localY;
-			tile.chunk = this;
 			tiles.set(localX, localY, tile);
+			tile.chunk = this;
 		}
 		return tile;
 	}

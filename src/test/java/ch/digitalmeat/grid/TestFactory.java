@@ -1,12 +1,11 @@
 package ch.digitalmeat.grid;
 
-import ch.digitalmeat.grid.chunk.Chunk;
 
-public class TestFactory implements TileGridFactory<TestTile> {
+public class TestFactory implements TileGridFactory<TestTile, TestChunk> {
 
 	@Override
-	public Chunk<TestTile> createChunk() {
-		return new Chunk<TestTile>(this);
+	public TestChunk createChunk() {
+		return new TestChunk(this);
 	}
 
 	@Override

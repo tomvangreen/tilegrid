@@ -11,15 +11,15 @@ import ch.digitalmeat.grid.chunk.Chunk;
 import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.TileBase;
 
-public class SimpleTileGridSerializer<T extends TileBase<T>> implements TileGridSerializer<T> {
+public class SimpleTileGridSerializer<T extends TileBase<T, C>, C extends Chunk<T, C>> implements TileGridSerializer<T, C> {
 
 	@Override
-	public TileGrid<T> readGrid(String gridFile) {
+	public TileGrid<T, C> readGrid(String gridFile) {
 		return null;
 	}
 
 	@Override
-	public void writeGrid(String path, TileGrid<T> grid) {
+	public void writeGrid(String path, TileGrid<T, C> grid) {
 		try {
 			File file = new File(path + ".grid");
 			File parent = file.getParentFile();
@@ -36,16 +36,16 @@ public class SimpleTileGridSerializer<T extends TileBase<T>> implements TileGrid
 		}
 	}
 
-	private void writeGrid(TileGrid<T> grid, BufferedWriter writer, String path) throws IOException {
+	private void writeGrid(TileGrid<T, C> grid, BufferedWriter writer, String path) throws IOException {
 		writer.write("chunksize:" + grid.chunkWidth + ";" + grid.chunkHeight);
 		writer.write("\n");
-		Map<ChunkCoordinates, Chunk<T>> chunks = grid.chunks;
+		Map<ChunkCoordinates, C> chunks = grid.chunks;
 		writer.write("chunks:" + grid.chunkWidth + ";" + grid.chunkHeight);
 		writer.write("\n");
 
 		for (ChunkCoordinates coordinates : chunks.keySet()) {
 
-			Chunk<T> chunk = chunks.get(coordinates);
+			C chunk = chunks.get(coordinates);
 			String name = coordinates.x + "." + coordinates.y;
 			writer.write(name);
 			writer.write("\n");
@@ -55,12 +55,12 @@ public class SimpleTileGridSerializer<T extends TileBase<T>> implements TileGrid
 	}
 
 	@Override
-	public Chunk<T> readChunk(String chunkFile) {
+	public C readChunk(String chunkFile) {
 		return null;
 	}
 
 	@Override
-	public void writeChunk(String path, Chunk<T> chunk) {
+	public void writeChunk(String path, C chunk) {
 		try {
 			File file = new File(path);
 			File parent = file.getParentFile();
@@ -78,7 +78,7 @@ public class SimpleTileGridSerializer<T extends TileBase<T>> implements TileGrid
 		}
 	}
 
-	private void writeChunk(Chunk<T> chunk, BufferedWriter writer, String path) throws IOException {
+	private void writeChunk(C chunk, BufferedWriter writer, String path) throws IOException {
 		for (int y = chunk.grid.chunkHeight - 1; y >= 0; y--) {
 			for (int x = 0; x < chunk.grid.chunkWidth; x++) {
 				T tile = chunk.get(x, y);
