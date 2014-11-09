@@ -1,4 +1,4 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.chunk;
 
 public class ChunkCoordinates {
 	public int x;

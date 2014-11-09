@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.tile.TileCoordinates;
+
 public class TileCoordinatesTest {
 	@Test
 	public void testTileEquality() {

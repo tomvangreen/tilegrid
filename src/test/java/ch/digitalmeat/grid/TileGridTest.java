@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+
 public class TileGridTest {
 	@Test
 	public void testAllTilesNull() {

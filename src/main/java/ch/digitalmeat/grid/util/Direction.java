@@ -1,4 +1,4 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.util;
 
 public interface Direction<D> {
 

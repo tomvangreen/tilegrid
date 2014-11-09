@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import ch.digitalmeat.grid.util.Direction8;
+
 public class Direction8Test {
 
 	@Test

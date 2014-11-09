@@ -3,6 +3,11 @@ package ch.digitalmeat.grid;
 import java.util.HashMap;
 import java.util.Map;
 
+import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.tile.TileCoordinates;
+
 public class TileGrid<T extends TileBase<T>> {
 	public final TileGridFactory<T> factory;
 	public final int chunkWidth;

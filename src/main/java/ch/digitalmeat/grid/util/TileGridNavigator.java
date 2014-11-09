@@ -1,4 +1,9 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.util;
+
+import ch.digitalmeat.grid.TileGrid;
+import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.tile.TileCoordinates;
 
 public class TileGridNavigator<T extends TileBase<T>> {
 	public final TileGrid<T> grid;

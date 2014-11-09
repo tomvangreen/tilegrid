@@ -1,4 +1,9 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.tile;
+
+import ch.digitalmeat.grid.TileGrid;
+import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.util.Direction;
 
 public class TileBase<T extends TileBase<T>> {
 	public int localX;

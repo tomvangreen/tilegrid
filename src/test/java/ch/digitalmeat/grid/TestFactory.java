@@ -1,5 +1,7 @@
 package ch.digitalmeat.grid;
 
+import ch.digitalmeat.grid.chunk.Chunk;
+
 public class TestFactory implements TileGridFactory<TestTile> {
 
 	@Override

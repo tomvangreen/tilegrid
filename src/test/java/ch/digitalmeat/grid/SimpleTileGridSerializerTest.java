@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.util.SimpleTileGridSerializer;
+
 public class SimpleTileGridSerializerTest {
 
 	private static final String TESTFOLDER = "testdata/";

@@ -1,4 +1,4 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.util;
 
 import java.util.ArrayList;
 import java.util.List;

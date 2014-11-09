@@ -1,4 +1,6 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.tile;
+
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 
 public class TileCoordinates {
 	public final ChunkCoordinates chunkCoordinates = new ChunkCoordinates();

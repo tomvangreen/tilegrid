@@ -1,4 +1,4 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.util;
 
 public enum Direction8 implements Direction<Direction8> {
 	//@formatter:off

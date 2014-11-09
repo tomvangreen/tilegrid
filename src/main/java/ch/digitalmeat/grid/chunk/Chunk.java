@@ -1,4 +1,9 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.chunk;
+
+import ch.digitalmeat.grid.TileGrid;
+import ch.digitalmeat.grid.TileGridFactory;
+import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.util.Table;
 
 public class Chunk<T extends TileBase<T>> {
 	public final ChunkCoordinates coordinates;

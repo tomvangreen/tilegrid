@@ -1,10 +1,15 @@
-package ch.digitalmeat.grid;
+package ch.digitalmeat.grid.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
+
+import ch.digitalmeat.grid.TileGrid;
+import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.tile.TileBase;
 
 public class SimpleTileGridSerializer<T extends TileBase<T>> implements TileGridSerializer<T> {
 

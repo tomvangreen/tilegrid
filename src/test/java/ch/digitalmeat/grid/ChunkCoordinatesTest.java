@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
+import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+
 public class ChunkCoordinatesTest {
 	@Test
 	public void testChunkEquality() {
