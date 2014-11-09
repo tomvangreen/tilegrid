@@ -3,15 +3,16 @@ package ch.digitalmeat.grid.chunk;
 import ch.digitalmeat.grid.TileGrid;
 import ch.digitalmeat.grid.TileGridFactory;
 import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.util.Direction;
 import ch.digitalmeat.grid.util.Table;
 
-public class Chunk<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+public class ChunkBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final ChunkCoordinates coordinates;
 	private Table<T> tiles;
 	public TileGrid<T, C> grid;
 	private final TileGridFactory<T, C> factory;
 
-	public Chunk(TileGridFactory<T, C> factory) {
+	public ChunkBase(TileGridFactory<T, C> factory) {
 		this.factory = factory;
 		coordinates = new ChunkCoordinates();
 	}
@@ -34,5 +35,14 @@ public class Chunk<T extends TileBase<T, C>, C extends Chunk<T, C>> {
 			tile.chunk = this;
 		}
 		return tile;
+	}
+
+	public C neighbour(Direction<?> direction) {
+		if (grid == null) {
+			return null;
+		}
+		int chunkX = coordinates.x + direction.stepX();
+		int chunkY = coordinates.y + direction.stepY();
+		return grid.getChunk(chunkX, chunkY);
 	}
 }

@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.Map;
 
 import ch.digitalmeat.grid.TileGrid;
-import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.TileBase;
 
-public class SimpleTileGridSerializer<T extends TileBase<T, C>, C extends Chunk<T, C>> implements TileGridSerializer<T, C> {
+public class SimpleTileGridSerializer<T extends TileBase<T, C>, C extends ChunkBase<T, C>> implements TileGridSerializer<T, C> {
 
 	@Override
 	public TileGrid<T, C> readGrid(String gridFile) {

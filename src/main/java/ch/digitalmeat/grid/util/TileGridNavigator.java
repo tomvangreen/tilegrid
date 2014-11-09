@@ -1,11 +1,11 @@
 package ch.digitalmeat.grid.util;
 
 import ch.digitalmeat.grid.TileGrid;
-import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.tile.TileCoordinates;
 
-public class TileGridNavigator<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+public class TileGridNavigator<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final TileGrid<T, C> grid;
 	public final TileCoordinates coordinates = new TileCoordinates();
 

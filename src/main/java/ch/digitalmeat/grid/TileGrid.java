@@ -3,12 +3,12 @@ package ch.digitalmeat.grid;
 import java.util.HashMap;
 import java.util.Map;
 
-import ch.digitalmeat.grid.chunk.Chunk;
+import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.tile.TileCoordinates;
 
-public class TileGrid<T extends TileBase<T, C>, C extends Chunk<T, C>> {
+public class TileGrid<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final TileGridFactory<T, C> factory;
 	public final int chunkWidth;
 	public final int chunkHeight;
@@ -47,20 +47,20 @@ public class TileGrid<T extends TileBase<T, C>, C extends Chunk<T, C>> {
 		return chunk;
 	}
 
-	public int getChunkX(int globalX) {
-		return globalX / chunkWidth;
+	public int getChunkX(long globalX) {
+		return (int) (globalX / chunkWidth);
 	}
 
-	public int getChunkY(int globalY) {
-		return globalY / chunkHeight;
+	public int getChunkY(long globalY) {
+		return (int) (globalY / chunkHeight);
 	}
 
-	public int getLocalX(int globalX) {
-		return globalX % chunkWidth;
+	public int getLocalX(long globalX) {
+		return (int) (globalX % chunkWidth);
 	}
 
-	public int getLocalY(int globalY) {
-		return globalY % chunkHeight;
+	public int getLocalY(long globalY) {
+		return (int) (globalY % chunkHeight);
 	}
 
 	public int getGlobalX(int chunkX, int localX) {
@@ -71,7 +71,7 @@ public class TileGrid<T extends TileBase<T, C>, C extends Chunk<T, C>> {
 		return chunkY * chunkHeight + localY;
 	}
 
-	public T getTile(int globalX, int globalY) {
+	public T getTile(long globalX, long globalY) {
 		int chunkX = getChunkX(globalX);
 		int chunkY = getChunkY(globalY);
 		int localX = getLocalX(globalX);
