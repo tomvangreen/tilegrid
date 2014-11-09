@@ -6,8 +6,7 @@ import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.util.Direction;
 
 public class TileBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
-	public int localX;
-	public int localY;
+	public final TileCoordinates coordinates = new TileCoordinates();
 	public ChunkBase<T, C> chunk;
 
 	public T neighbour(Direction<?> direction) {
@@ -16,8 +15,8 @@ public class TileBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 		}
 		TileGrid<T, C> grid = chunk.grid;
 		ChunkCoordinates coordinates = chunk.coordinates;
-		int worldX = grid.getGlobalX(coordinates.x, localX) + direction.stepX();
-		int worldY = grid.getGlobalY(coordinates.y, localY) + direction.stepY();
+		int worldX = grid.getGlobalX(coordinates.x, this.coordinates.localX) + direction.stepX();
+		int worldY = grid.getGlobalY(coordinates.y, this.coordinates.localY) + direction.stepY();
 		return chunk.grid.getTile(worldX, worldY);
 	}
 

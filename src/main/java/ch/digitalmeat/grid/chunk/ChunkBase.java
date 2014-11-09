@@ -31,8 +31,8 @@ public class ChunkBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 		T tile = tiles.get(localX, localY);
 		if (tile == null) {
 			tile = factory.createTile();
-			tile.localX = localX;
-			tile.localY = localY;
+			tile.coordinates.localX = localX;
+			tile.coordinates.localY = localY;
 			tiles.set(localX, localY, tile);
 			tile.chunk = this;
 		}
