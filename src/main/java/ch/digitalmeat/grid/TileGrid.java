@@ -40,7 +40,7 @@ public class TileGrid<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 		if (chunk == null) {
 			chunk = factory.createChunk();
 			chunk.coordinates.set(coordinates.x, coordinates.y);
-			chunk.init(chunkWidth, chunkHeight);
+			chunk.init(coordinates.x, coordinates.y, chunkWidth, chunkHeight);
 			chunk.grid = this;
 			chunks.put(chunk.coordinates, chunk);
 		}

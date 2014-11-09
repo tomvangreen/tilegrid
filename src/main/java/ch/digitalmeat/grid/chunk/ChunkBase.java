@@ -17,7 +17,9 @@ public class ChunkBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 		coordinates = new ChunkCoordinates();
 	}
 
-	public void init(int width, int height) {
+	public void init(int x, int y, int width, int height) {
+		coordinates.set(x, y);
+		// TODO: Free items
 		tiles = new Table<T>(width, height);
 	}
 

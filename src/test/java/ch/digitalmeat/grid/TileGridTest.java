@@ -13,7 +13,7 @@ public class TileGridTest {
 	public void testAllTilesNull() {
 		int width = 16;
 		int height = 16;
-		TileGrid<?, ?> grid = new TileGrid<>(null, 16, 16);
+		TileGrid<?, ?> grid = new TileGrid<TestTile, TestChunk>(null, 16, 16);
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				assertNull(grid.getTile(x, y));
