@@ -1,6 +1,5 @@
 package ch.digitalmeat.grid;
 
-
 public class TestFactory implements TileGridFactory<TestTile, TestChunk> {
 
 	@Override
@@ -9,8 +8,8 @@ public class TestFactory implements TileGridFactory<TestTile, TestChunk> {
 	}
 
 	@Override
-	public TestTile createTile() {
-		return new TestTile();
+	public TestTile createTile(TileNavigator<TestTile> navigator) {
+		return new TestTile(navigator);
 	}
 
 }

@@ -8,12 +8,13 @@ import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.tile.TileCoordinates;
 
-public class TileGrid<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
+public class TileGrid<T extends TileBase<T>, C extends ChunkBase<T, C>> {
 	public final TileGridFactory<T, C> factory;
 	public final int chunkWidth;
 	public final int chunkHeight;
 	private final ChunkCoordinates finderCoordinates = new ChunkCoordinates();
 	public final Map<ChunkCoordinates, C> chunks = new HashMap<ChunkCoordinates, C>();
+	public final TileGridNavigator<T> navigator = new TileGridNavigator<>(this);
 
 	public TileGrid(TileGridFactory<T, C> factory, int chunkWidth, int chunkHeight) {
 		this.factory = factory;

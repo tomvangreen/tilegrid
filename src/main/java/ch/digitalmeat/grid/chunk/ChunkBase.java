@@ -6,7 +6,7 @@ import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.util.Direction;
 import ch.digitalmeat.grid.util.Table;
 
-public class ChunkBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
+public class ChunkBase<T extends TileBase<T>, C extends ChunkBase<T, C>> {
 	public final ChunkCoordinates coordinates;
 	private Table<T> tiles;
 	public TileGrid<T, C> grid;
@@ -30,11 +30,10 @@ public class ChunkBase<T extends TileBase<T, C>, C extends ChunkBase<T, C>> {
 	public T ensure(int localX, int localY) {
 		T tile = tiles.get(localX, localY);
 		if (tile == null) {
-			tile = factory.createTile();
+			tile = factory.createTile(grid.navigator);
 			tile.coordinates.localX = localX;
 			tile.coordinates.localY = localY;
 			tiles.set(localX, localY, tile);
-			tile.chunk = this;
 		}
 		return tile;
 	}
