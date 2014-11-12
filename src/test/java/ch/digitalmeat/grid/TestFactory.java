@@ -1,6 +1,6 @@
 package ch.digitalmeat.grid;
 
-public class TestFactory implements TileGridFactory<TestTile, TestChunk> {
+public class TestFactory implements ChunkGridFactory<TestTile, TestChunk> {
 
 	@Override
 	public TestChunk createChunk() {

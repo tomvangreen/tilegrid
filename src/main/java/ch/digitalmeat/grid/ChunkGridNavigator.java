@@ -1,15 +1,25 @@
 package ch.digitalmeat.grid;
 
-import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.chunk.ChunkBase;
+import ch.digitalmeat.grid.tile.ChunkTileBase;
 import ch.digitalmeat.grid.util.Direction;
 
-public class TileGridNavigator<T extends TileBase<T>> implements TileNavigator<T> {
+/**
+ * Currently the chunk grid navigator only supports coordinates that are in
+ * integer range...
+ * 
+ * @author atombrot
+ *
+ * @param <T>
+ * @param <C>
+ */
+public class ChunkGridNavigator<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> implements TileNavigator<T> {
 	private int x;
 	private int y;
 
-	private final TileGrid<T, ?> grid;
+	private final ChunkGrid<T, C> grid;
 
-	public TileGridNavigator(TileGrid<T, ?> grid) {
+	public ChunkGridNavigator(ChunkGrid<T, C> grid) {
 		this.grid = grid;
 	}
 
@@ -20,7 +30,6 @@ public class TileGridNavigator<T extends TileBase<T>> implements TileNavigator<T
 
 	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
 		return y;
 	}
 

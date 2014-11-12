@@ -1,18 +1,18 @@
 package ch.digitalmeat.grid.chunk;
 
-import ch.digitalmeat.grid.TileGrid;
-import ch.digitalmeat.grid.TileGridFactory;
-import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.ChunkGrid;
+import ch.digitalmeat.grid.ChunkGridFactory;
+import ch.digitalmeat.grid.tile.ChunkTileBase;
 import ch.digitalmeat.grid.util.Direction;
 import ch.digitalmeat.grid.util.Table;
 
-public class ChunkBase<T extends TileBase<T>, C extends ChunkBase<T, C>> {
+public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final ChunkCoordinates coordinates;
 	private Table<T> tiles;
-	public TileGrid<T, C> grid;
-	private final TileGridFactory<T, C> factory;
+	public ChunkGrid<T, C> grid;
+	private final ChunkGridFactory<T, C> factory;
 
-	public ChunkBase(TileGridFactory<T, C> factory) {
+	public ChunkBase(ChunkGridFactory<T, C> factory) {
 		this.factory = factory;
 		coordinates = new ChunkCoordinates();
 	}

@@ -6,20 +6,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
 
-import ch.digitalmeat.grid.TileGrid;
+import ch.digitalmeat.grid.ChunkGrid;
 import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.chunk.ChunkCoordinates;
-import ch.digitalmeat.grid.tile.TileBase;
+import ch.digitalmeat.grid.tile.ChunkTileBase;
 
-public class SimpleTileGridSerializer<T extends TileBase<T>, C extends ChunkBase<T, C>> implements TileGridSerializer<T, C> {
+public class SimpleTileGridSerializer<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> implements TileGridSerializer<T, C> {
 
 	@Override
-	public TileGrid<T, C> readGrid(String gridFile) {
+	public ChunkGrid<T, C> readGrid(String gridFile) {
 		return null;
 	}
 
 	@Override
-	public void writeGrid(String path, TileGrid<T, C> grid) {
+	public void writeGrid(String path, ChunkGrid<T, C> grid) {
 		try {
 			File file = new File(path + ".grid");
 			File parent = file.getParentFile();
@@ -36,7 +36,7 @@ public class SimpleTileGridSerializer<T extends TileBase<T>, C extends ChunkBase
 		}
 	}
 
-	private void writeGrid(TileGrid<T, C> grid, BufferedWriter writer, String path) throws IOException {
+	private void writeGrid(ChunkGrid<T, C> grid, BufferedWriter writer, String path) throws IOException {
 		writer.write("chunksize:" + grid.chunkWidth + ";" + grid.chunkHeight);
 		writer.write("\n");
 		Map<ChunkCoordinates, C> chunks = grid.chunks;
