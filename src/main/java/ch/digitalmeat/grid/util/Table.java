@@ -24,14 +24,20 @@ public class Table<T> {
 	}
 
 	public int index(int x, int y) {
+		if (x < 0 || x >= width || y < 0 || y >= height) {
+			return -1;
+		}
 		return x + y * height;
 	}
 
 	public T get(int x, int y) {
-		return list.get(index(x, y));
+		return get(index(x, y));
 	}
 
 	public T get(int index) {
+		if (index < 0 || index >= list.size()) {
+			return null;
+		}
 		return list.get(index);
 	}
 
