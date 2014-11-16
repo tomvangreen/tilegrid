@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import ch.digitalmeat.grid.chunk.ChunkCoordinates;
+import ch.digitalmeat.grid.util.Coordinates;
 
 public class TileGridTest {
 	@Test
@@ -23,8 +23,8 @@ public class TileGridTest {
 
 	@Test
 	public void testChunkEquality() {
-		ChunkCoordinates c1 = new ChunkCoordinates(5, 5);
-		ChunkCoordinates c2 = new ChunkCoordinates(5, 5);
+		Coordinates c1 = new Coordinates(5, 5);
+		Coordinates c2 = new Coordinates(5, 5);
 		assertEquals(c1, c2);
 		c1.set(1, 3);
 		c2.set(1, 3);

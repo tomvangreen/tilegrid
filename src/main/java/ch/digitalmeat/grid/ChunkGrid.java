@@ -4,16 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ch.digitalmeat.grid.chunk.ChunkBase;
-import ch.digitalmeat.grid.chunk.ChunkCoordinates;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
-import ch.digitalmeat.grid.tile.TileCoordinates;
+import ch.digitalmeat.grid.util.Coordinates;
 
 public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final ChunkGridFactory<T, C> factory;
 	public final int chunkWidth;
 	public final int chunkHeight;
-	private final ChunkCoordinates finderCoordinates = new ChunkCoordinates();
-	public final Map<ChunkCoordinates, C> chunks = new HashMap<ChunkCoordinates, C>();
+	private final Coordinates finderCoordinates = new Coordinates();
+	public final Map<Coordinates, C> chunks = new HashMap<Coordinates, C>();
 	public final ChunkGridNavigator<T, C> navigator = new ChunkGridNavigator<T, C>(this);
 
 	public ChunkGrid(ChunkGridFactory<T, C> factory, int chunkWidth, int chunkHeight) {
@@ -27,7 +26,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return getChunk(finderCoordinates);
 	}
 
-	public C getChunk(ChunkCoordinates coordinates) {
+	public C getChunk(Coordinates coordinates) {
 		return chunks.get(coordinates);
 	}
 
@@ -36,7 +35,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return ensureChunk(finderCoordinates);
 	}
 
-	public C ensureChunk(ChunkCoordinates coordinates) {
+	public C ensureChunk(Coordinates coordinates) {
 		C chunk = chunks.get(coordinates);
 		if (chunk == null) {
 			chunk = factory.createChunk();
@@ -80,9 +79,10 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return getTile(chunkX, chunkY, localX, localY);
 	}
 
-	public T getTile(TileCoordinates coordinates) {
-		ChunkCoordinates chunk = coordinates.chunkCoordinates;
-		return getTile(chunk.x, chunk.y, coordinates.localX, coordinates.localY);
+	public T getTile(Coordinates coordinates) {
+		int chunkX = getChunkX(coordinates.x);
+		int chunkY = getChunkY(coordinates.y);
+		return getTile(chunkX, chunkY, coordinates.x, coordinates.y);
 	}
 
 	public T getTile(int chunkX, int chunkY, int localX, int localY) {

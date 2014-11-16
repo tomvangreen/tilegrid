@@ -1,10 +1,11 @@
 package ch.digitalmeat.grid.tile;
 
 import ch.digitalmeat.grid.TileNavigator;
+import ch.digitalmeat.grid.util.Coordinates;
 import ch.digitalmeat.grid.util.Direction;
 
 public class TileBase<T extends TileBase<T>> {
-	public final TileCoordinates coordinates = new TileCoordinates();
+	public final Coordinates coordinates = new Coordinates();
 	public final TileNavigator<T> navigator;
 
 	public TileBase(TileNavigator<T> navigator) {
@@ -12,7 +13,7 @@ public class TileBase<T extends TileBase<T>> {
 	}
 
 	public T neighbour(Direction<?> direction) {
-		navigator.setPosition(coordinates.localX, coordinates.localY);
+		navigator.setPosition(coordinates.x, coordinates.y);
 		return navigator.step(direction, 1);
 	}
 

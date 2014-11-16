@@ -14,8 +14,8 @@ public class ChunkTileBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T,
 
 	@Override
 	public T neighbour(Direction<?> direction) {
-		int x = coordinates.localX;
-		int y = coordinates.localY;
+		int x = coordinates.x;
+		int y = coordinates.y;
 		if (chunk != null) {
 			x += chunk.coordinates.x * chunk.grid.chunkWidth;
 			y += chunk.coordinates.y * chunk.grid.chunkHeight;
