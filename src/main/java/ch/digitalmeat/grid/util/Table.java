@@ -27,7 +27,7 @@ public class Table<T> {
 		if (x < 0 || x >= width || y < 0 || y >= height) {
 			return -1;
 		}
-		return x + y * height;
+		return x + y * width;
 	}
 
 	public T get(int x, int y) {
@@ -46,6 +46,9 @@ public class Table<T> {
 	}
 
 	public void set(int index, T value) {
+		if (index < 0 || index >= list.size()) {
+			return;
+		}
 		list.set(index, value);
 	}
 
