@@ -47,20 +47,27 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return chunk;
 	}
 
-	public int getChunkX(long globalX) {
-		return (int) (globalX / chunkWidth);
+	// TODO: Ultra ugly so far
+	public int getChunkX(int globalX) {
+		return ((globalX + (globalX < 0 ? 1 : 0)) / chunkWidth) - (globalX < 0 ? 1 : 0);
 	}
 
-	public int getChunkY(long globalY) {
-		return (int) (globalY / chunkHeight);
+	public int getChunkY(int globalY) {
+		return ((globalY + (globalY < 0 ? 1 : 0)) / chunkWidth) - (globalY < 0 ? 1 : 0);
 	}
 
-	public int getLocalX(long globalX) {
-		return (int) (globalX % chunkWidth);
+	public int getLocalX(int globalX) {
+		if (globalX >= 0) {
+			return globalX % chunkWidth;
+		}
+		return (chunkWidth + (globalX % chunkWidth)) % chunkWidth;
 	}
 
-	public int getLocalY(long globalY) {
-		return (int) (globalY % chunkHeight);
+	public int getLocalY(int globalY) {
+		if (globalY >= 0) {
+			return globalY % chunkHeight;
+		}
+		return (chunkHeight + (globalY % chunkHeight)) % chunkHeight;
 	}
 
 	public int getGlobalX(int chunkX, int localX) {
@@ -71,7 +78,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return chunkY * chunkHeight + localY;
 	}
 
-	public T getTile(long globalX, long globalY) {
+	public T getTile(int globalX, int globalY) {
 		int chunkX = getChunkX(globalX);
 		int chunkY = getChunkY(globalY);
 		int localX = getLocalX(globalX);
