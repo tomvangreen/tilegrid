@@ -33,8 +33,8 @@ public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 			tile = factory.createTile(grid.navigator);
 			tile.coordinates.x = localX;
 			tile.coordinates.y = localY;
-			tile.globalCoordinates.x = coordinates.x;
-			tile.globalCoordinates.y = coordinates.y;
+			tile.globalCoordinates.x = coordinates.x * grid.chunkWidth + localX;
+			tile.globalCoordinates.y = coordinates.y * grid.chunkHeight + localY;
 			tile.chunk = get();
 			tiles.set(localX, localY, tile);
 		}
