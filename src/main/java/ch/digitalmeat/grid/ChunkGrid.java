@@ -103,6 +103,6 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 
 	public T ensureTile(int globalX, int globalY) {
 		C chunk = ensureChunk(getChunkX(globalX), getChunkY(globalY));
-		return chunk.ensure(globalX, globalY);
+		return chunk.ensure(getLocalX(globalX), getLocalY(globalY));
 	}
 }

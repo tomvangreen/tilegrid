@@ -13,7 +13,7 @@ public class BoundsSelectorTests {
 		grid.ensureTile(0, 0);
 		grid.ensureTile(1, 0);
 
-		List<TestTile> tiles = grid.selector.select(-10, -10, 10, 10);
+		List<TestTile> tiles = grid.selector.select(-10, -10, 10, 10, false);
 		Assert.assertNotNull(tiles);
 		Assert.assertEquals(2, tiles.size());
 	}
@@ -25,17 +25,30 @@ public class BoundsSelectorTests {
 		grid.ensureTile(0, 0);
 		grid.ensureTile(5, 0);
 
-		List<TestTile> tiles = grid.selector.select(0, 0, 4, 4);
+		List<TestTile> tiles = grid.selector.select(0, 0, 4, 4, false);
 		Assert.assertNotNull(tiles);
 		Assert.assertEquals(1, tiles.size());
 
-		tiles = grid.selector.select(4, 0, 8, 4);
+		tiles = grid.selector.select(4, 0, 8, 4, false);
 		Assert.assertNotNull(tiles);
 		Assert.assertEquals(1, tiles.size());
 
-		tiles = grid.selector.select(0, 0, 8, 4);
+		tiles = grid.selector.select(0, 0, 8, 4, false);
 		Assert.assertNotNull(tiles);
 		Assert.assertEquals(2, tiles.size());
+	}
+
+	@Test
+	public void testEnsure() {
+		TestFactory factory = new TestFactory();
+		ChunkGrid<TestTile, TestChunk> grid = new ChunkGrid<TestTile, TestChunk>(factory, 2, 2);
+		grid.ensureTile(0, 0);
+		grid.ensureTile(3, 1);
+
+		List<TestTile> tiles = grid.selector.select(0, 0, 3, 1, true);
+		Assert.assertNotNull(tiles);
+		Assert.assertEquals(8, tiles.size());
+
 	}
 
 	// TODO: Requires more tests

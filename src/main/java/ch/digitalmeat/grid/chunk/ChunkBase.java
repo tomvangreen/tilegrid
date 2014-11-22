@@ -27,16 +27,14 @@ public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return tiles.get(localX, localY);
 	}
 
-	public T ensure(int globalX, int globalY) {
-		int localX = grid.getLocalX(globalX);
-		int localY = grid.getLocalY(globalY);
+	public T ensure(int localX, int localY) {
 		T tile = tiles.get(localX, localY);
 		if (tile == null) {
 			tile = factory.createTile(grid.navigator);
 			tile.coordinates.x = localX;
 			tile.coordinates.y = localY;
-			tile.globalCoordinates.x = globalX;
-			tile.globalCoordinates.y = globalY;
+			tile.globalCoordinates.x = coordinates.x;
+			tile.globalCoordinates.y = coordinates.y;
 			tile.chunk = get();
 			tiles.set(localX, localY, tile);
 		}
