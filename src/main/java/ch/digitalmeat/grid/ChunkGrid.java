@@ -14,6 +14,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 	private final Coordinates finderCoordinates = new Coordinates();
 	public final Map<Coordinates, C> chunks = new HashMap<Coordinates, C>();
 	public final ChunkGridNavigator<T, C> navigator = new ChunkGridNavigator<T, C>(this);
+	public final BoundsSelector<T, C> selector = new BoundsSelector(this);
 
 	public ChunkGrid(ChunkGridFactory<T, C> factory, int chunkWidth, int chunkHeight) {
 		this.factory = factory;

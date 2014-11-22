@@ -8,7 +8,7 @@ import ch.digitalmeat.grid.util.Direction;
 public class ChunkTileBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> extends TileBase<T> {
 
 	public C chunk;
-	public Coordinates globalCoordinates;
+	public final Coordinates globalCoordinates = new Coordinates();
 
 	public ChunkTileBase(TileNavigator<T> navigator) {
 		super(navigator);
