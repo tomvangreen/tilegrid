@@ -9,6 +9,7 @@ import java.util.Map;
 import ch.digitalmeat.grid.ChunkGrid;
 import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
+import ch.digitalmeat.util.Point;
 
 public class SimpleTileGridSerializer<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> implements TileGridSerializer<T, C> {
 
@@ -38,11 +39,11 @@ public class SimpleTileGridSerializer<T extends ChunkTileBase<T, C>, C extends C
 	private void writeGrid(ChunkGrid<T, C> grid, BufferedWriter writer, String path) throws IOException {
 		writer.write("chunksize:" + grid.chunkWidth + ";" + grid.chunkHeight);
 		writer.write("\n");
-		Map<Coordinates, C> chunks = grid.chunks;
+		Map<Point, C> chunks = grid.chunks;
 		writer.write("chunks:" + grid.chunkWidth + ";" + grid.chunkHeight);
 		writer.write("\n");
 
-		for (Coordinates coordinates : chunks.keySet()) {
+		for (Point coordinates : chunks.keySet()) {
 
 			C chunk = chunks.get(coordinates);
 			String name = coordinates.x + "." + coordinates.y;

@@ -5,14 +5,14 @@ import java.util.Map;
 
 import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
-import ch.digitalmeat.grid.util.Coordinates;
+import ch.digitalmeat.util.Point;
 
 public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final ChunkGridFactory<T, C> factory;
 	public final int chunkWidth;
 	public final int chunkHeight;
-	private final Coordinates finderCoordinates = new Coordinates();
-	public final Map<Coordinates, C> chunks = new HashMap<Coordinates, C>();
+	private final Point finderCoordinates = new Point();
+	public final Map<Point, C> chunks = new HashMap<Point, C>();
 	public final ChunkGridNavigator<T, C> navigator = new ChunkGridNavigator<T, C>(this);
 	public final BoundsSelector<T, C> selector = new BoundsSelector(this);
 
@@ -27,7 +27,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return getChunk(finderCoordinates);
 	}
 
-	public C getChunk(Coordinates coordinates) {
+	public C getChunk(Point coordinates) {
 		return chunks.get(coordinates);
 	}
 
@@ -36,7 +36,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return ensureChunk(finderCoordinates);
 	}
 
-	public C ensureChunk(Coordinates coordinates) {
+	public C ensureChunk(Point coordinates) {
 		C chunk = chunks.get(coordinates);
 		if (chunk == null) {
 			chunk = factory.createChunk();
@@ -87,7 +87,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return getTile(chunkX, chunkY, localX, localY);
 	}
 
-	public T getTile(Coordinates coordinates) {
+	public T getTile(Point coordinates) {
 		int chunkX = getChunkX(coordinates.x);
 		int chunkY = getChunkY(coordinates.y);
 		return getTile(chunkX, chunkY, coordinates.x, coordinates.y);

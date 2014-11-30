@@ -5,11 +5,11 @@ import java.util.List;
 
 import ch.digitalmeat.grid.chunk.ChunkBase;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
-import ch.digitalmeat.grid.util.Coordinates;
+import ch.digitalmeat.util.Point;
 
 public class BoundsSelector<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> implements Selector<T> {
 
-	private final Coordinates coordinates = new Coordinates();
+	private final Point coordinates = new Point();
 	private final List<T> results = new ArrayList<T>();
 	private final ChunkGrid<T, C> grid;
 

@@ -2,13 +2,13 @@ package ch.digitalmeat.grid.tile;
 
 import ch.digitalmeat.grid.TileNavigator;
 import ch.digitalmeat.grid.chunk.ChunkBase;
-import ch.digitalmeat.grid.util.Coordinates;
 import ch.digitalmeat.grid.util.Direction;
+import ch.digitalmeat.util.Point;
 
 public class ChunkTileBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> extends TileBase<T> {
 
 	public C chunk;
-	public final Coordinates globalCoordinates = new Coordinates();
+	public final Point globalCoordinates = new Point();
 
 	public ChunkTileBase(TileNavigator<T> navigator) {
 		super(navigator);

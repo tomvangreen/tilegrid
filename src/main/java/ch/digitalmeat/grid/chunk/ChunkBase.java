@@ -3,19 +3,19 @@ package ch.digitalmeat.grid.chunk;
 import ch.digitalmeat.grid.ChunkGrid;
 import ch.digitalmeat.grid.ChunkGridFactory;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
-import ch.digitalmeat.grid.util.Coordinates;
 import ch.digitalmeat.grid.util.Direction;
-import ch.digitalmeat.grid.util.Table;
+import ch.digitalmeat.util.Point;
+import ch.digitalmeat.util.Table;
 
 public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
-	public final Coordinates coordinates;
+	public final Point coordinates;
 	private Table<T> tiles;
 	public ChunkGrid<T, C> grid;
 	private final ChunkGridFactory<T, C> factory;
 
 	public ChunkBase(ChunkGridFactory<T, C> factory) {
 		this.factory = factory;
-		coordinates = new Coordinates();
+		coordinates = new Point();
 	}
 
 	public void init(int x, int y, int width, int height) {
