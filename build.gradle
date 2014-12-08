@@ -21,6 +21,7 @@ configurations.all {
 }
 
 jar {
+	from sourceSets.main.allSource
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
                    'Implementation-Version': version
