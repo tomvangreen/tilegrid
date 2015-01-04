@@ -81,6 +81,14 @@ public enum Direction4 implements Direction<Direction4> {
 
 	private final static Direction4 directions[] = { Right, Down, Left, Up, Right };
 
+	/**
+	 * Returns an Direction4 value based on the input angle. Angle 0 is facing
+	 * right and the angle goes clockwise (90 => Down)
+	 * 
+	 * @param angle
+	 *            The input angle.
+	 * @return
+	 */
 	public static Direction4 getDirection(float angle) {
 		return directions[(int) Math.round((((double) angle % 360) / 90))];
 	}

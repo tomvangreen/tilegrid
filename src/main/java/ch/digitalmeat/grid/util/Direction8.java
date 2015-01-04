@@ -85,6 +85,14 @@ public enum Direction8 implements Direction<Direction8> {
 
 	private final static Direction8 directions[] = { Right, DownRight, Down, DownLeft, Left, UpLeft, Up, UpRight, Right };
 
+	/**
+	 * Returns an Direction8 value based on the input angle. Angle 0 is facing
+	 * right and the angle goes clockwise (90 => Down)
+	 * 
+	 * @param angle
+	 *            The input angle.
+	 * @return
+	 */
 	public static Direction8 getDirection(float angle) {
 		while (angle < 0) {
 			angle += 360;
