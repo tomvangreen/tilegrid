@@ -80,33 +80,33 @@ public class Direction8Test {
 	public void testGetDirection() {
 		System.out.println("Testing Direction8.getDirection");
 
-		executeGetDirectionTest(Right, -22);
-		executeGetDirectionTest(Right, 0);
 		executeGetDirectionTest(Right, 22);
+		executeGetDirectionTest(Right, 0);
+		executeGetDirectionTest(Right, -22);
 
-		executeGetDirectionTest(DownRight, 23);
-		executeGetDirectionTest(DownRight, 45);
-		executeGetDirectionTest(DownRight, 67);
+		executeGetDirectionTest(DownRight, -23);
+		executeGetDirectionTest(DownRight, -45);
+		executeGetDirectionTest(DownRight, -67);
 
-		executeGetDirectionTest(Down, 68);
-		executeGetDirectionTest(Down, 90);
-		executeGetDirectionTest(Down, 112);
+		executeGetDirectionTest(Down, -68);
+		executeGetDirectionTest(Down, -90);
+		executeGetDirectionTest(Down, -112);
 
-		executeGetDirectionTest(DownLeft, 113);
-		executeGetDirectionTest(DownLeft, 135);
-		executeGetDirectionTest(DownLeft, 157);
+		executeGetDirectionTest(DownLeft, -113);
+		executeGetDirectionTest(DownLeft, -135);
+		executeGetDirectionTest(DownLeft, -157);
 
-		executeGetDirectionTest(Left, 158);
-		executeGetDirectionTest(Left, 180);
-		executeGetDirectionTest(Left, 202);
+		executeGetDirectionTest(Left, -158);
+		executeGetDirectionTest(Left, -180);
+		executeGetDirectionTest(Left, -202);
 
-		executeGetDirectionTest(UpLeft, 203);
-		executeGetDirectionTest(UpLeft, 225);
-		executeGetDirectionTest(UpLeft, 247);
+		executeGetDirectionTest(UpLeft, -203);
+		executeGetDirectionTest(UpLeft, -225);
+		executeGetDirectionTest(UpLeft, -247);
 
-		executeGetDirectionTest(Up, 248);
-		executeGetDirectionTest(Up, 270);
-		executeGetDirectionTest(Up, 292);
+		executeGetDirectionTest(Up, -248);
+		executeGetDirectionTest(Up, -270);
+		executeGetDirectionTest(Up, -292);
 
 		System.out.println("Completed Testing Direction8.getDirection");
 	}

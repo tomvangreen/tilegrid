@@ -15,34 +15,37 @@ public class Direction4Test {
 	public void testGetDirection() {
 		System.out.println("Testing Direction4.getDirection");
 
-		executeGetDirectionTest(Right, -44);
-		executeGetDirectionTest(Right, -22);
-		executeGetDirectionTest(Right, 0);
+		executeGetDirectionTest(Right, 44);
 		executeGetDirectionTest(Right, 22);
-		executeGetDirectionTest(Right, 23);
+		executeGetDirectionTest(Right, 0);
+		executeGetDirectionTest(Right, -22);
+		executeGetDirectionTest(Right, -23);
 
-		executeGetDirectionTest(Down, 67);
-		executeGetDirectionTest(Down, 68);
-		executeGetDirectionTest(Down, 90);
-		executeGetDirectionTest(Down, 112);
-		executeGetDirectionTest(Down, 113);
+		executeGetDirectionTest(Down, -67);
+		executeGetDirectionTest(Down, -68);
+		executeGetDirectionTest(Down, -90);
+		executeGetDirectionTest(Down, -112);
+		executeGetDirectionTest(Down, -113);
 
-		executeGetDirectionTest(Left, 157);
-		executeGetDirectionTest(Left, 158);
-		executeGetDirectionTest(Left, 180);
-		executeGetDirectionTest(Left, 202);
-		executeGetDirectionTest(Left, 203);
+		executeGetDirectionTest(Left, -157);
+		executeGetDirectionTest(Left, -158);
+		executeGetDirectionTest(Left, -180);
+		executeGetDirectionTest(Left, -202);
+		executeGetDirectionTest(Left, -203);
 
-		executeGetDirectionTest(Up, 247);
-		executeGetDirectionTest(Up, 248);
-		executeGetDirectionTest(Up, 270);
-		executeGetDirectionTest(Up, 292);
-		executeGetDirectionTest(Up, 293);
+		executeGetDirectionTest(Up, -247);
+		executeGetDirectionTest(Up, -248);
+		executeGetDirectionTest(Up, -270);
+		executeGetDirectionTest(Up, -292);
+		executeGetDirectionTest(Up, -293);
 
 		System.out.println("Completed Testing Direction4.getDirection");
 	}
 
 	private void executeGetDirectionTest(Direction4 expected, float angle) {
+		while (angle < 0) {
+			angle += 360;
+		}
 		System.out.println("  Testing angle: " + angle);
 		System.out.println("       Expected: " + expected);
 		Direction4 found = Direction4.getDirection(angle);

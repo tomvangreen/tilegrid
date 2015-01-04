@@ -79,11 +79,11 @@ public enum Direction4 implements Direction<Direction4> {
 		return 0;
 	}
 
-	private final static Direction4 directions[] = { Right, Down, Left, Up, Right };
+	private final static Direction4 directions[] = { Right, Up, Left, Down, Right };
 
 	/**
 	 * Returns an Direction4 value based on the input angle. Angle 0 is facing
-	 * right and the angle goes clockwise (90 => Down)
+	 * right and the angle goes counter clockwise (-90 => Down)
 	 * 
 	 * @param angle
 	 *            The input angle.
