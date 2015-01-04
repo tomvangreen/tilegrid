@@ -83,4 +83,13 @@ public enum Direction8 implements Direction<Direction8> {
 		return 0;
 	}
 
+	private final static Direction8 directions[] = { Right, DownRight, Down, DownLeft, Left, UpLeft, Up, UpRight, Right };
+
+	public static Direction8 getDirection(float angle) {
+		while (angle < 0) {
+			angle += 360;
+		}
+		return directions[(int) Math.round((((double) angle % 360) / 45))];
+	}
+
 }

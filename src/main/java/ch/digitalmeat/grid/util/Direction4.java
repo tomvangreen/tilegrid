@@ -79,4 +79,10 @@ public enum Direction4 implements Direction<Direction4> {
 		return 0;
 	}
 
+	private final static Direction4 directions[] = { Right, Down, Left, Up, Right };
+
+	public static Direction4 getDirection(float angle) {
+		return directions[(int) Math.round((((double) angle % 360) / 90))];
+	}
+
 }
