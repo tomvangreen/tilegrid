@@ -4,8 +4,8 @@ import ch.digitalmeat.grid.ChunkGrid;
 import ch.digitalmeat.grid.ChunkGridFactory;
 import ch.digitalmeat.grid.tile.ChunkTileBase;
 import ch.digitalmeat.grid.util.Direction;
+import ch.digitalmeat.grid.util.Table;
 import ch.digitalmeat.util.Point;
-import ch.digitalmeat.util.Table;
 
 public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
 	public final Point coordinates;

@@ -2,7 +2,7 @@ package ch.digitalmeat.grid;
 
 import ch.digitalmeat.grid.tile.TileBase;
 import ch.digitalmeat.grid.util.Direction;
-import ch.digitalmeat.util.Table;
+import ch.digitalmeat.grid.util.Table;
 
 public class TableNavigator<T extends TileBase<T>> implements TileNavigator<T> {
 	private int x;
