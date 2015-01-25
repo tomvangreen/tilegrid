@@ -6,5 +6,5 @@ import ch.digitalmeat.grid.tile.ChunkTileBase;
 public interface ChunkGridFactory<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>> {
 	public C createChunk();
 
-	public T createTile(TileNavigator<T> navigator);
+	public T createTile(TileNavigator<T> navigator, int globalX, int globalY);
 }

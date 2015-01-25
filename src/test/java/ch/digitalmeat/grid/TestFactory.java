@@ -8,7 +8,7 @@ public class TestFactory implements ChunkGridFactory<TestTile, TestChunk> {
 	}
 
 	@Override
-	public TestTile createTile(TileNavigator<TestTile> navigator) {
+	public TestTile createTile(TileNavigator<TestTile> navigator, int globalX, int globalY) {
 		return new TestTile(navigator);
 	}
 

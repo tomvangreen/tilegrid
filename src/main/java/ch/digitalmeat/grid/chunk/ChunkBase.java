@@ -30,11 +30,13 @@ public class ChunkBase<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 	public T ensure(int localX, int localY) {
 		T tile = tiles.get(localX, localY);
 		if (tile == null) {
-			tile = factory.createTile(grid.navigator);
+			int globalX = coordinates.x * grid.chunkWidth + localX;
+			int globalY = coordinates.y * grid.chunkHeight + localY;
+			tile = factory.createTile(grid.navigator, globalX, globalY);
 			tile.coordinates.x = localX;
 			tile.coordinates.y = localY;
-			tile.globalCoordinates.x = coordinates.x * grid.chunkWidth + localX;
-			tile.globalCoordinates.y = coordinates.y * grid.chunkHeight + localY;
+			tile.globalCoordinates.x = globalX;
+			tile.globalCoordinates.y = globalY;
 			tile.chunk = get();
 			tiles.set(localX, localY, tile);
 		}

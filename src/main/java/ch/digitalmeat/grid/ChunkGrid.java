@@ -14,7 +14,7 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 	private final Point finderCoordinates = new Point();
 	public final Map<Point, C> chunks = new HashMap<Point, C>();
 	public final ChunkGridNavigator<T, C> navigator = new ChunkGridNavigator<T, C>(this);
-	public final BoundsSelector<T, C> selector = new BoundsSelector(this);
+	public final BoundsSelector<T, C> selector = new BoundsSelector<T, C>(this);
 
 	public ChunkGrid(ChunkGridFactory<T, C> factory, int chunkWidth, int chunkHeight) {
 		this.factory = factory;
@@ -87,10 +87,8 @@ public class ChunkGrid<T extends ChunkTileBase<T, C>, C extends ChunkBase<T, C>>
 		return getTile(chunkX, chunkY, localX, localY);
 	}
 
-	public T getTile(Point coordinates) {
-		int chunkX = getChunkX(coordinates.x);
-		int chunkY = getChunkY(coordinates.y);
-		return getTile(chunkX, chunkY, coordinates.x, coordinates.y);
+	public T getTile(Point globalCoordinates) {
+		return getTile(globalCoordinates.x, globalCoordinates.y);
 	}
 
 	public T getTile(int chunkX, int chunkY, int localX, int localY) {
